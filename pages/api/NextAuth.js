@@ -6,8 +6,8 @@ export default NextAuth({
     Providers.Credentials({
       name: 'Credentials',
       credentials: {
-        username: { label: 'Username', type: 'text' },
-        password: {  label: 'Password', type: 'password' }
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" }
       },
       authorize: async (credentials) => {
         // Aquí puedes validar las credenciales del administrador
