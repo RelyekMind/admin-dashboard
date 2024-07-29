@@ -26,6 +26,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/add-product": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/add-product.js"
+    ],
+    "/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/login.js"
+    ],
+    "/update-stock": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/update-stock.js"
     ]
   },
   "ampFirstPages": []

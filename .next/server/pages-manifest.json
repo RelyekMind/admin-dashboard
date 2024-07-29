@@ -2,5 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/add-product": "pages/add-product.js",
+  "/login": "pages/login.js",
+  "/update-stock": "pages/update-stock.js"
 }

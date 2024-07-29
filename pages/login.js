@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -6,6 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Redirigir o realizar alguna acción después de iniciar sesión con éxito
+      router.push('/');
     } catch (error) {
       setError(error.message);
     }
@@ -35,7 +37,7 @@ const Login = () => {
             placeholder="Email"
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-4">
           <label htmlFor="password" className="block text-gray-700">Password</label>
           <input
             type="password"
@@ -46,12 +48,7 @@ const Login = () => {
             placeholder="Password"
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded"
-        >
-          Login
-        </button>
+        <button type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded">Login</button>
       </form>
     </div>
   );

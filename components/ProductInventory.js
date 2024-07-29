@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 
@@ -7,40 +7,46 @@ const ProductInventory = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const querySnapshot = await getDocs(collection(db, 'products'));
-      const productsList = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(productsList);
+      const productsCollection = collection(db, 'products');
+      const productSnapshot = await getDocs(productsCollection);
+      const productList = productSnapshot.docs.map(doc => doc.data());
+      setProducts(productList);
     };
 
     fetchProducts();
   }, []);
 
   return (
-    <div className="inventory-container">
-      <h2 className="text-xl font-semibold mb-4">Product Inventory</h2>
-      <table className="inventory-table">
-        <thead>
+    <div className="container mx-auto px-4">
+      <h2 className="text-2xl font-bold mb-4">Product Inventory</h2>
+      <table className="min-w-full bg-white">
+        <thead className="bg-gray-800 text-white">
           <tr>
-            <th>SKU</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Main Image</th>
-            <th>Price</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">SKU</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Title</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Main Image</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Other Images</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Stock</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.title}</td>
-              <td>{product.description}</td>
-              <td>
-                <img src={product.mainImageUrl} alt={product.title} className="inventory-image" />
+          {products.map((product, index) => (
+            <tr key={index}>
+              <td className="text-left py-3 px-4">{product.sku}</td>
+              <td className="text-left py-3 px-4">{product.title}</td>
+              <td className="text-left py-3 px-4">{product.description}</td>
+              <td className="text-left py-3 px-4">
+                <img src={product.mainImage} alt={product.title} width="50" height="50" />
               </td>
-              <td>${product.price}</td>
+              <td className="text-left py-3 px-4">
+                {product.otherImages.map((img, i) => (
+                  <img key={i} src={img} alt={`${product.title} ${i}`} width="50" height="50" />
+                ))}
+              </td>
+              <td className="text-left py-3 px-4">${product.price}</td>
+              <td className="text-left py-3 px-4">{product.stock}</td>
             </tr>
           ))}
         </tbody>

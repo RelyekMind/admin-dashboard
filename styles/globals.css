@@ -29,6 +29,14 @@
   grid-template-columns: 1fr;
   gap: 20px;
 }
+.bg-navy-blue {
+  background-color: #001f3f;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
 
 .admin-section {
   background-color: white;
