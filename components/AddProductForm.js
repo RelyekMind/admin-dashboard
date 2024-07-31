@@ -66,28 +66,28 @@ const AddProductForm = () => {
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <div className="form-group">
-        <label>Product Title</label>
+        <label>Nombre del producto</label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="form-input" />
       </div>
       <div className="form-group">
-        <label>Description</label>
+        <label>Descripcion</label>
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="form-input"></textarea>
       </div>
       <div className="form-group">
-        <label>Price</label>
+        <label>Precio</label>
         <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} className="form-input" />
       </div>
       <div className="form-group">
-        <label>Main Image</label>
+        <label>Imagen principal</label>
         <input type="file" onChange={handleMainImageChange} className="form-input" />
       </div>
       <div className="form-group">
-        <label>Other Images</label>
+        <label>Otras imagenes</label>
         <input type="file" onChange={(e) => handleOtherImageChange(0, e)} className="form-input" />
         <input type="file" onChange={(e) => handleOtherImageChange(1, e)} className="form-input" />
         <input type="file" onChange={(e) => handleOtherImageChange(2, e)} className="form-input" />
       </div>
-      <button type="submit" className="submit-button">Add Product</button>
+      <button type="submit" className="submit-button">Agregar producto</button>
     </form>
   );
 };

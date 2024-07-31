@@ -6,7 +6,7 @@ const ProductsPage = () => {
   return (
     <div>
       <Header />
-      <h2 className="text-2xl font-bold text-center my-8">Product Inventory</h2>
+      <h2 className="text-2xl font-bold text-center my-8">Inventario de productos</h2>
       <ProductList />
     </div>
   );

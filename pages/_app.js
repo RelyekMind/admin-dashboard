@@ -1,16 +1,19 @@
-import { useRouter } from 'next/router';
-import Header from '../components/Header';
+// pages/_app.js
 import '../styles/globals.css';
+import { AuthProvider } from '../context/AuthContext';
+import Header from '../components/Header';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const noHeaderRoutes = ['/login']; // Añade aquí todas las rutas donde no quieres mostrar el header
+
+  const isLoginPage = router.pathname === '/login';
 
   return (
-    <div>
-      {!noHeaderRoutes.includes(router.pathname) && <Header />}
+    <AuthProvider>
+      {!isLoginPage && <Header />}
       <Component {...pageProps} />
-    </div>
+    </AuthProvider>
   );
 }
 

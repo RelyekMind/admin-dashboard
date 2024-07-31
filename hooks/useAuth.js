@@ -1,44 +1,27 @@
 import { useState, useEffect, useContext, createContext } from 'react';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { firebaseApp } from '../firebase'; // Asegúrate de que esta ruta sea correcta
+import { onAuthStateChanged, signOut as firebaseSignOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
-const auth = getAuth(firebaseApp);
+const AuthContext = createContext();
 
-const authContext = createContext();
-
-export function ProvideAuth({ children }) {
-  const auth = useProvideAuth();
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
-}
-
-export const useAuth = () => {
-  return useContext(authContext);
-};
-
-function useProvideAuth() {
+export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const handleUser = (rawUser) => {
-    if (rawUser) {
-      setUser(rawUser);
-      return rawUser;
-    } else {
-      setUser(false);
-      return false;
-    }
-  };
-
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, handleUser);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
     return () => unsubscribe();
   }, []);
 
-  const signOutUser = () => {
-    return signOut(auth).then(() => setUser(false));
-  };
+  return (
+    <AuthContext.Provider value={{ user }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
 
-  return {
-    user,
-    signOut: signOutUser,
-  };
+export function useAuth() {
+  return useContext(AuthContext);
 }

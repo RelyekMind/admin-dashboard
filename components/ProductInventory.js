@@ -18,16 +18,16 @@ const ProductInventory = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <h2 className="text-2xl font-bold mb-4">Product Inventory</h2>
+      <h2 className="text-2xl font-bold mb-4">Lista de productos</h2>
       <table className="min-w-full bg-white">
         <thead className="bg-gray-800 text-white">
           <tr>
             <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">SKU</th>
-            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Title</th>
-            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Main Image</th>
-            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Other Images</th>
-            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Nombre Producto</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Descripcion</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Imagen principal</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Otras imagenes</th>
+            <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Precio</th>
             <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Stock</th>
           </tr>
         </thead>

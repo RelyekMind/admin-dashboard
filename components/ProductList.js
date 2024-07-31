@@ -6,16 +6,16 @@ const ProductList = () => {
 
   return (
     <div className="inventory-container">
-      <h2 className="text-xl font-semibold mb-2">Product Inventory</h2>
+      <h2 className="text-xl font-semibold mb-2">Lista de productos</h2>
       <table className="inventory-table">
         <thead>
           <tr>
             <th>SKU</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Main Image</th>
-            <th>Other Images</th>
-            <th>Price</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Imagen principal</th>
+            <th>Otras imagenes</th>
+            <th>Precio</th>
             <th>Stock</th>
           </tr>
         </thead>
